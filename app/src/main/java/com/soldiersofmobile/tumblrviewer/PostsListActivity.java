@@ -94,9 +94,15 @@ public class PostsListActivity extends AppCompatActivity
     @Override
     public void loadUrl(String url) {
 
-        Intent intent = new Intent(this, PostDetailsActivity.class);
-        intent.putExtra(PostDetailsActivity.URL, url);
-        startActivity(intent);
-
+        if(findViewById(R.id.detailsContainer).getVisibility() == View.GONE) {
+            Intent intent = new Intent(this, PostDetailsActivity.class);
+            intent.putExtra(PostDetailsActivity.URL, url);
+            startActivity(intent);
+        } else {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.detailsContainer, PostDetailsFragment.newInstance(url))
+                    .commit();
+        }
     }
 }
