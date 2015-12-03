@@ -1,5 +1,6 @@
 package com.soldiersofmobile.tumblrviewer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,7 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class PostsListActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, PostsListFragment.PostListCallback {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,5 +89,14 @@ public class PostsListActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void loadUrl(String url) {
+
+        Intent intent = new Intent(this, PostDetailsActivity.class);
+        intent.putExtra(PostDetailsActivity.URL, url);
+        startActivity(intent);
+
     }
 }
