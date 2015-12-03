@@ -15,7 +15,7 @@ public class Post {
     private String blogName;
     @SerializedName("id")
     @Expose
-    private Integer id;
+    private Long id;
     @SerializedName("post_url")
     @Expose
     private String postUrl;
@@ -109,16 +109,16 @@ public class Post {
      * @return
      *     The id
      */
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
     /**
-     * 
+     *
      * @param id
      *     The id
      */
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
